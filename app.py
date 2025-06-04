@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
-import pickle
 import pandas as pd
+import cloudpickle
 
 app = Flask(__name__)
 
 # Load the model
-with open("probability_rf_model.pkl", "rb") as file:
-    model = pickle.load(file)
+with open("tumor_model.pkl", "rb") as file:
+    model = cloudpickle.load(file)
 
 @app.route("/", methods=["GET"])
 def home():
